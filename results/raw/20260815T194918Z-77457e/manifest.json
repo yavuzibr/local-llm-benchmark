@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "run_id": "20260815T194918Z-77457e",
+  "scenario": "T2",
+  "started_utc": "2026-08-15T19:49:19.105842+00:00",
+  "model": "LiquidAI/LFM2.5-2.6B",
+  "base_url": "http://127.0.0.1:8000/v1",
+  "git_commit": "bf844f2",
+  "git_dirty": true,
+  "python": "3.12.14",
+  "packages": {
+    "vllm": "0.26.0",
+    "torch": "2.11.0",
+    "triton": "3.6.0",
+    "transformers": "5.15.0",
+    "openai": "3.1.0"
+  },
+  "gpu_idle_before": {
+    "name": "NVIDIA GeForce RTX 4070 Ti SUPER",
+    "memory_total_mib": "16376",
+    "memory_used_mib": "13839",
+    "temperature_c": "47",
+    "power_draw_w": "7.70",
+    "clock_sm_mhz": "210",
+    "utilization_pct": "0"
+  },
+  "gpu_at_finish": {
+    "name": "NVIDIA GeForce RTX 4070 Ti SUPER",
+    "memory_total_mib": "16376",
+    "memory_used_mib": "13838",
+    "temperature_c": "57",
+    "power_draw_w": "198.54",
+    "clock_sm_mhz": "2760",
+    "utilization_pct": "99"
+  },
+  "params": {
+    "concurrency_levels": [
+      1,
+      4
+    ],
+    "isl": 1024,
+    "osl": 256,
+    "n_per_worker": 3,
+    "warmup_per_worker": 1,
+    "cooldown_s": 3.0,
+    "temperature": 0.0,
+    "ignore_eos": true
+  },
+  "chat_template_overhead_tokens": 10,
+  "server_cmd": null,
+  "note": null,
+  "finished_utc": "2026-08-15T19:49:44.346280+00:00"
+}

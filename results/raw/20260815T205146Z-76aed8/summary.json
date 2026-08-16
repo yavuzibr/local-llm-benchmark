@@ -1,0 +1,33 @@
+[
+  {
+    "concurrency": 64,
+    "n_requests": 512,
+    "n_errors": 0,
+    "wall_s": 107.3949625690002,
+    "out_tokens": 131072,
+    "in_tokens": 524288,
+    "sys_out_tok_s": 1220.4669275412946,
+    "sys_total_tok_s": 6102.334637706473,
+    "req_per_s": 4.767448935708182,
+    "user_speed_tok_s": 20.211257753385873,
+    "efficiency": 0.9435234548744537,
+    "ttft_p50": 572.7999,
+    "ttft_p95": 2888.3721,
+    "ttft_p99": 4318.6889,
+    "e2e_p50": 13453.6977,
+    "e2e_p95": 15127.3821,
+    "tpot_mean": 49.477376034773286,
+    "itl_p50": 18.4677,
+    "itl_p95": 146.7998,
+    "itl_p99": 151.8085,
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 4070 Ti SUPER",
+      "memory_total_mib": "16376",
+      "memory_used_mib": "13683",
+      "temperature_c": "66",
+      "power_draw_w": "263.18",
+      "clock_sm_mhz": "2745",
+      "utilization_pct": "98"
+    }
+  }
+]
