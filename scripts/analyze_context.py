@@ -14,9 +14,9 @@ Merges every T3 run under results/raw/, then answers two questions:
      against that first-principles model.
 
 Usage:
-    python scripts/analyze_t3.py
-    python scripts/analyze_t3.py --plot
-    python scripts/analyze_t3.py --runs id1,id2 --plot
+    python scripts/analyze_context.py
+    python scripts/analyze_context.py --plot
+    python scripts/analyze_context.py --runs id1,id2 --plot
 """
 
 import argparse

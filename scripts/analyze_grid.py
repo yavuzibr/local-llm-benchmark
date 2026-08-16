@@ -6,13 +6,13 @@ Ham veriyi hic degistirmez. Tum ozetler bu scriptle yeniden uretilebilir.
 
 Kullanim:
     # En son kosuyu analiz et
-    python scripts/analyze.py
+    python scripts/analyze_grid.py
 
     # Belirli bir kosuyu
-    python scripts/analyze.py --run 20260815T183104Z-ee97f8
+    python scripts/analyze_grid.py --run 20260815T183104Z-ee97f8
 
     # Grafik de uret (matplotlib gerekir: uv pip install matplotlib)
-    python scripts/analyze.py --plot
+    python scripts/analyze_grid.py --plot
 """
 
 import argparse

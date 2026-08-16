@@ -12,10 +12,10 @@ bu JSONL'den yeniden uretilebilir.
 
 Kullanim:
     # T1 tek akis gecikmesi izgarasi
-    python scripts/step3_grid.py --scenario T1 --isl 128,1024,4096 --osl 128,512 --n 10
+    python scripts/bench_latency_grid.py --scenario T1 --isl 128,1024,4096 --osl 128,512 --n 10
 
     # Tek hucre
-    python scripts/step3_grid.py --scenario smoke --isl 1024 --osl 128 --n 5
+    python scripts/bench_latency_grid.py --scenario smoke --isl 1024 --osl 128 --n 5
 """
 
 import argparse

@@ -12,9 +12,9 @@ Adım 1'den farkı:
 Henüz dosyaya yazmıyor -- ham JSONL çıktısı Adım 3'te gelecek.
 
 Kullanım:
-    python scripts/step2_repeat.py
-    python scripts/step2_repeat.py --n 30 --max-tokens 256
-    python scripts/step2_repeat.py --isl 1024 --n 20
+    python scripts/probe_stability.py
+    python scripts/probe_stability.py --n 30 --max-tokens 256
+    python scripts/probe_stability.py --isl 1024 --n 20
 """
 
 import argparse

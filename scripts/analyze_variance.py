@@ -13,8 +13,8 @@ should treat as the real uncertainty on a reported number. Most benchmarks
 report only the within-run figure, which understates it.
 
 Usage:
-    python scripts/analyze_repeat.py --scenario T1rep
-    python scripts/analyze_repeat.py --runs id1,id2,id3
+    python scripts/analyze_variance.py --scenario T1rep
+    python scripts/analyze_variance.py --runs id1,id2,id3
 """
 
 import argparse

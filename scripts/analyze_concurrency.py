@@ -11,10 +11,10 @@ client-bottleneck validation runs that each carry half the total load, so
 mixing them into the curve would understate throughput at that level.
 
 Usage:
-    python scripts/analyze_t2.py
-    python scripts/analyze_t2.py --plot
-    python scripts/analyze_t2.py --runs 20260815T195213Z-cb17a9,20260815T201743Z-bb1e31
-    python scripts/analyze_t2.py --plot --slo-ttft 1000 --slo-itl 20
+    python scripts/analyze_concurrency.py
+    python scripts/analyze_concurrency.py --plot
+    python scripts/analyze_concurrency.py --runs 20260815T195213Z-cb17a9,20260815T201743Z-bb1e31
+    python scripts/analyze_concurrency.py --plot --slo-ttft 1000 --slo-itl 20
 """
 
 import argparse

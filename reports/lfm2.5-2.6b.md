@@ -553,27 +553,27 @@ vllm serve LiquidAI/LFM2.5-2.6B --host 127.0.0.1 --port 8000 \
   --kv-cache-memory=6442450944 --no-enable-prefix-caching --seed 0
 
 # T1 — single-stream latency
-python scripts/step3_grid.py --scenario T1 \
+python scripts/bench_latency_grid.py --scenario T1 \
   --isl 128,512,1024,2048,4096,8192 --osl 128,512 \
   --n 10 --warmup 5 --cooldown 5
-python scripts/analyze.py --plot
+python scripts/analyze_grid.py --plot
 
 # T1 repeatability — run three times, restarting the server between each
-python scripts/step3_grid.py --scenario T1rep \
+python scripts/bench_latency_grid.py --scenario T1rep \
   --isl 128,1024,4096,8192 --osl 256 --n 10 --warmup 5 --cooldown 5
-python scripts/analyze_repeat.py --scenario T1rep
+python scripts/analyze_variance.py --scenario T1rep
 
 # T2 — concurrency
-python scripts/step4_concurrency.py \
+python scripts/bench_concurrency.py \
   --concurrency 1,2,4,8,16,32,64 --isl 1024 --osl 256 \
   --n-per-worker 5 --warmup 2 --cooldown 15
-python scripts/analyze_t2.py --plot
+python scripts/analyze_concurrency.py --plot
 
 # T3 — context scaling (restart server with --max-model-len 131072)
-python scripts/step3_grid.py --scenario T3 \
+python scripts/bench_latency_grid.py --scenario T3 \
   --isl 1024,4096,8192,16384,32768,65536,130816 --osl 128 \
   --n 8 --warmup 3 --cooldown 10
-python scripts/analyze_t3.py --plot
+python scripts/analyze_context.py --plot
 ```
 
 Raw per-request data and run manifests are under `results/raw/`. Every summary

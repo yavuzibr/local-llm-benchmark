@@ -8,9 +8,9 @@ tek bir isteği ölçüp ekrana döküyor. Önce sayıları gözle görüp mant�
 olduklarına ikna olacağız, sonra Adım 2'de tekrarlamaya geçeceğiz.
 
 Kullanım:
-    python scripts/step1_single_request.py
-    python scripts/step1_single_request.py --max-tokens 1024
-    python scripts/step1_single_request.py --isl 1024 --max-tokens 256 --ignore-eos
+    python scripts/probe_single_request.py
+    python scripts/probe_single_request.py --max-tokens 1024
+    python scripts/probe_single_request.py --isl 1024 --max-tokens 256 --ignore-eos
 """
 
 import argparse

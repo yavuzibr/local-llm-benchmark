@@ -13,8 +13,8 @@ Olculen metrikler:
   - Verimlilik orani     : sistem verimi / (N x tek kullanici hizi)
 
 Kullanim:
-    python scripts/step4_concurrency.py --concurrency 1,2,4,8,16,32,64
-    python scripts/step4_concurrency.py --concurrency 1,4,16 --n-per-worker 8
+    python scripts/bench_concurrency.py --concurrency 1,2,4,8,16,32,64
+    python scripts/bench_concurrency.py --concurrency 1,4,16 --n-per-worker 8
 """
 
 import argparse
