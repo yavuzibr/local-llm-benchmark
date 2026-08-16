@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 """
-Adım 1 — Tek istek, elle ölçüm.
+Probe: single request timing.
 
-Amaç: TTFT ve ITL'i client tarafında, streaming üzerinden ölçmek.
-Bu script kasıtlı olarak basit tutuldu: dosyaya yazmıyor, ortalama almıyor,
-tek bir isteği ölçüp ekrana döküyor. Önce sayıları gözle görüp mantıklı
-olduklarına ikna olacağız, sonra Adım 2'de tekrarlamaya geçeceğiz.
+Sends one streaming request and prints TTFT, the ITL distribution and token
+counts. This is a diagnostic tool, not a data collector -- it writes nothing to
+disk. Use it to confirm the server is reachable and the timing logic behaves as
+expected before running a real benchmark.
 
-Kullanım:
+Two details matter for correctness. The opening chunk carries role="assistant"
+with empty content and no token, so counting it would inflate TTFT. Token counts
+come from the server's usage block rather than client-side tokenization.
+
+Usage:
     python scripts/probe_single_request.py
     python scripts/probe_single_request.py --max-tokens 1024
     python scripts/probe_single_request.py --isl 1024 --max-tokens 256 --ignore-eos

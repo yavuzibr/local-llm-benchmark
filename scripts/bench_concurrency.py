@@ -1,18 +1,21 @@
 #!/usr/bin/env python3
 """
-T2 — Esszamanlilik doyma egrisi.
+Benchmark: concurrency saturation curve (test T2).
 
-Worker havuzu yaklasimi: N paralel dongu, her biri istegi bitirince hemen
-yenisini baslatir. Boylece sunucuda surekli N istek ucusta kalir.
-"Baslat, hepsini bekle, tekrarla" yaklasiminda esszamanlilik kosunun
-sonuna dogru dusuyor ve olculen deger hedeflenenden az oluyor.
+Uses a worker pool: N parallel loops, each starting a new request the moment its
+previous one completes, so exactly N requests stay in flight. The simpler
+"launch N, wait for all, repeat" approach lets concurrency drop toward the end
+of each round and therefore measures less load than intended.
 
-Olculen metrikler:
-  - Sistem cikti verimi  : toplam cikti token / duvar saati suresi
-  - Kullanici basina hiz : 1 / TPOT
-  - Verimlilik orani     : sistem verimi / (N x tek kullanici hizi)
+Reported per level:
+    system throughput   total output tokens / wall clock time
+    per-user speed      1000 / TPOT
+    efficiency          system throughput / (N x per-user speed)
 
-Kullanim:
+Writes raw per-request JSONL, a run manifest, and per-level aggregates to
+summary.json.
+
+Usage:
     python scripts/bench_concurrency.py --concurrency 1,2,4,8,16,32,64
     python scripts/bench_concurrency.py --concurrency 1,4,16 --n-per-worker 8
 """

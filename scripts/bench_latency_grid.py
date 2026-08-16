@@ -1,20 +1,27 @@
 #!/usr/bin/env python3
 """
-Adım 3 — Ham veri üretimi: ISL/OSL ızgarası, JSONL çıktısı, run manifest.
+Benchmark: latency across an ISL x OSL grid (tests T1 and T3).
 
-Adım 2'den farkı:
-  - ISL artık tokenizer ile hassas kontrol ediliyor (hedef +/- birkaç token).
-  - Her istek results/raw/<run_id>/requests.jsonl icine bir satir olarak yazilir.
-  - Her kosu bir manifest.json uretir: git commit, paket surumleri, GPU durumu.
+Collects raw data. For each cell it runs warm-up requests, then N measured
+requests at concurrency 1, appending one JSON line per request to
+results/raw/<run_id>/requests.jsonl.
 
-Ham veri asla silinmez. Islenmis ozetler (persentiller, grafikler) her zaman
-bu JSONL'den yeniden uretilebilir.
+Input length is controlled with the model's own tokenizer: the chat template
+overhead is measured, subtracted from the target, and the remainder is taken
+from a random window of a text pool. The random window keeps every prompt
+unique, so no request can benefit from a warm prefix.
 
-Kullanim:
-    # T1 tek akis gecikmesi izgarasi
+Each run also writes manifest.json recording the git commit, package versions,
+GPU state and every parameter used.
+
+Raw data is never modified. Summaries are produced separately by
+analyze_grid.py and can always be regenerated from the JSONL.
+
+Usage:
+    # T1 single-stream latency grid
     python scripts/bench_latency_grid.py --scenario T1 --isl 128,1024,4096 --osl 128,512 --n 10
 
-    # Tek hucre
+    # Single cell
     python scripts/bench_latency_grid.py --scenario smoke --isl 1024 --osl 128 --n 5
 """
 

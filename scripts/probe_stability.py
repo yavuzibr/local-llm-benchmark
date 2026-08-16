@@ -1,17 +1,20 @@
 #!/usr/bin/env python3
 """
-Adım 2 — Tekrarla ve dağılıma bak.
+Probe: measurement stability.
 
-Adım 1'den farkı:
-  - Tek bir kalıcı AsyncOpenAI istemcisi kullanır (client ek yükü ~170 ms
-    yerine ~0). Bkz. METHODOLOGY 4.2.
-  - Warm-up istekleri gönderir ve bunları HİÇBİR istatistiğe katmaz.
-  - N istek koşup persentil dağılımı çıkarır.
-  - İki ayrı toplama seviyesi raporlar: istek seviyesi ve token seviyesi.
+Runs warm-up requests followed by N measured requests over a single persistent
+client, then reports percentiles at two levels: per request (TTFT, E2E, TPOT)
+and per token (ITL pooled across all requests).
 
-Henüz dosyaya yazmıyor -- ham JSONL çıktısı Adım 3'te gelecek.
+Averaging per-request percentiles is statistically meaningless, so token-level
+figures come from one pooled sample rather than an average of per-request
+percentiles.
 
-Kullanım:
+Writes nothing to disk. Use it to confirm the environment is stable enough to
+benchmark -- a TPOT coefficient of variation above a few percent usually means
+something else is competing for the GPU.
+
+Usage:
     python scripts/probe_stability.py
     python scripts/probe_stability.py --n 30 --max-tokens 256
     python scripts/probe_stability.py --isl 1024 --n 20

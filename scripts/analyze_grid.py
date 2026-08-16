@@ -1,17 +1,27 @@
 #!/usr/bin/env python3
 """
-Adım 4 — Analiz: ham JSONL -> persentil tablosu + islenmis CSV.
+Analysis: ISL x OSL grid runs (tests T1 and T3).
 
-Ham veriyi hic degistirmez. Tum ozetler bu scriptle yeniden uretilebilir.
+Reads the raw JSONL of one run, groups requests into cells, and reports
+percentiles at both the request and token level. It also fits TTFT against
+input length: the intercept is the fixed harness overhead and the inverse slope
+is prefill throughput.
 
-Kullanim:
-    # En son kosuyu analiz et
+The linear fit is only valid while prefill scales linearly. Past roughly 16k
+tokens the quadratic attention term dominates and the model breaks down --
+a negative intercept is the warning sign. Use analyze_context.py for
+long-context runs.
+
+Never modifies raw data.
+
+Usage:
+    # Most recent run
     python scripts/analyze_grid.py
 
-    # Belirli bir kosuyu
+    # A specific run
     python scripts/analyze_grid.py --run 20260815T183104Z-ee97f8
 
-    # Grafik de uret (matplotlib gerekir: uv pip install matplotlib)
+    # With plots (needs matplotlib: uv pip install matplotlib)
     python scripts/analyze_grid.py --plot
 """
 
