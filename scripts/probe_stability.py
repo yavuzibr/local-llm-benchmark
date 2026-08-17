@@ -22,14 +22,15 @@ Usage:
 
 import argparse
 import asyncio
+import os
 import statistics
 import time
 
 from openai import AsyncOpenAI
 
-BASE_URL = "http://127.0.0.1:8000/v1"
+BASE_URL = os.environ.get("LLMBENCH_BASE_URL", "http://127.0.0.1:8000/v1")
 API_KEY = "EMPTY"  # openai >= 2.34 bos string kabul etmiyor
-MODEL = "LiquidAI/LFM2.5-2.6B"
+MODEL = os.environ.get("LLMBENCH_MODEL", "LiquidAI/LFM2.5-2.6B")
 
 
 def make_prompt(target_tokens: int, tag: str) -> str:

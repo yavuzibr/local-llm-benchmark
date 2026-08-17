@@ -19,16 +19,17 @@ Usage:
 
 import argparse
 import asyncio
+import os
 import statistics
 import time
 
 from openai import AsyncOpenAI
 
-BASE_URL = "http://127.0.0.1:8000/v1"
+BASE_URL = os.environ.get("LLMBENCH_BASE_URL", "http://127.0.0.1:8000/v1")
 # openai >= 2.34 boş string'i reddediyor ("Missing credentials"),
 # yerel sunucu kimlik doğrulaması istemese de dolu bir değer şart.
 API_KEY = "EMPTY"
-MODEL = "LiquidAI/LFM2.5-2.6B"
+MODEL = os.environ.get("LLMBENCH_MODEL", "LiquidAI/LFM2.5-2.6B")
 
 
 def make_prompt(target_tokens: int) -> str:
