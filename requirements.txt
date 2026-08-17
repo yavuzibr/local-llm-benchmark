@@ -1,0 +1,17 @@
+# Install order matters: vLLM pins an older transformers, so transformers
+# must be upgraded afterwards or the LFM2.5 tokenizer will fail to load.
+#
+#   uv pip install -r requirements.txt
+#
+# vLLM is only needed on the machine serving the model. Pointing the scripts
+# at a remote server via LLMBENCH_BASE_URL needs only the client packages.
+
+vllm==0.26.0
+transformers==5.15.0
+
+# Client and analysis
+openai==3.1.0
+matplotlib==3.11.1
+
+# Installed as a vLLM dependency; listed so client-only installs get it.
+numpy>=2.0
