@@ -96,3 +96,5 @@ The harness was calibrated before any result was trusted:
 
 Every number in the report is regenerable from `results/raw/`.
 
+Benchmarking a different model: [docs/ADDING_A_MODEL.md](docs/ADDING_A_MODEL.md)
+
